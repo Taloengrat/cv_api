@@ -4,7 +4,7 @@ USER root
 
 WORKDIR /usr/src/myapp
 
-COPY src/main/resources/static/taloengrat_cv.png /usr/src/myapp/
+COPY src/main/resources/static/taloengrat_cv.pdf /usr/src/myapp/
 
 EXPOSE 8080
 

@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -20,7 +19,7 @@ public class DownloadFileController {
     @GetMapping("/download-cv")
     public ResponseEntity<InputStreamResource> download() throws IOException {
 
-        File file = new ClassPathResource("/usr/src/myapp/taloengrat_cv.png").getFile();
+        File file = new File("/usr/src/myapp/taloengrat_cv.pdf");
 
         InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
 
@@ -31,8 +30,8 @@ public class DownloadFileController {
 
     @GetMapping("/show-cv")
     public ResponseEntity<byte[]> getImage() throws IOException {
-        File img = new File("/usr/src/myapp/taloengrat_cv.png");
-        return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(Files.readAllBytes(img.toPath()));
+        File img = new File("/usr/src/myapp/taloengrat_cv.pdf");
+        return ResponseEntity.ok().contentType(MediaType.APPLICATION_PDF).body(Files.readAllBytes(img.toPath()));
     }
 
     @RequestMapping(value = "/")

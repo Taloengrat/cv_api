@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-k8s-cv-api-deployment
+  labels:
+    app: docker-k8s-cv-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docker-k8s-cv-api
+  template:
+    metadata:
+      labels:
+        app: docker-k8s-cv-api
+    spec:
+      containers:
+      - name: docker-k8s-cv-api
+        image: wolzarm1997/cv_api
+        ports:
+        - containerPort: 8080
